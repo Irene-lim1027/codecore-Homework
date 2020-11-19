@@ -1,0 +1,21 @@
+Views:
+- Create Cohort
+  - GET /new (show form)
+  - POST /new (creates a new cohort)
+- See All Cohorts (index)
+  - GET /index
+- Show Single Cohort
+  - GET cohorts/:id
+  - DELETE cohorts/:id
+- EDIT Single cohort
+  - GET cohorts/:id/edit
+  - PATCH cohorts/:id
+
+Database:
+- Table: Cohort
+  - Name
+  - Logo_url
+  - Members (comma-delimited list of names, eg. Jason Au, Bob Bobby, Carrie Chan)
+
+
+

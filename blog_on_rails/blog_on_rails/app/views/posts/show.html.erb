@@ -1,35 +1,37 @@
-    <h1><%= @post.title %></h1>
+<h1><%= @post.title %></h1>
     <p><%= @post.body %></p>
     <h5> Created by: <%= @post.user&.full_name %> </h5>
     <p><%= time_ago_in_words(@post.created_at) %></p>
+        <% if can? :crud, @post %>
     <%=link_to "Edit", edit_post_path(@post)%>
     <%=link_to "Delete",post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %>
-         <%#post_path(@post) pot#show %>
-
-
-    <h2>🐥 Comments: </h2>
-    <%= form_with model: [@post,@comment], local:true do |f| %>
-    <%= f.text_area(
-        :body,
-        cols: 50,
-        rows: 5,
-        placeholder: "Leave your comments" 
-    )%>
-    <p><%= f.submit "Submit" %></p>
     <% end %>
 
+<h2>🐥 Comments: </h2>
+    <%= form_with model: [@post,@comment], local:true do |f| %>
+    <%= f.text_area(
+            :body,
+            cols: 50,
+            rows: 5,
+            placeholder: "Leave your comments" 
+        )%>
+    <p><%= f.submit "Submit" %></p>
+<% end %>
+
     <ul>
-    <% @comments.each do |c| %>
+        <% @comments.each do |c| %>
     <li>
-    <p><%= c.body %></p>
-    <%= time_ago_in_words(c.created_at) %>
-    <%= link_to(
-     "Delete",
-    post_comment_path(@post,c),method: :delete, data: {confirm: "Are you sure?"})%>
+        <p><%= c.body %></p>
+        <% if can? :crud, c %>
+        <%= time_ago_in_words(c.created_at) %>
+        <%= link_to(
+         "Delete",
+         post_comment_path(@post,c),method: :delete, data: {confirm: "Are you sure?"})%>
+    <% end %>
     <% end %>
     </li>
     </ul>
-    <small>
-    Commented by <%= @comment.user &.full_name %>
-    </small>
-    
+        <small>
+            Commented by <%= @comment.user &.full_name %>
+        </small>
+        

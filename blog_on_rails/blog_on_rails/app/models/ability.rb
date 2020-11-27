@@ -6,7 +6,7 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
-      user ||= User.new # guest user (not logged in)
+      user ||= User.new 
        if user.admin?
          can :manage, :all
        end
@@ -14,7 +14,7 @@ class Ability
     #     can :read, :all
     # end
 
-       alias_action :create, :read, :update, :destroy, to: :crud
+      alias_action :create, :read, :update, :destroy, to: :crud
        
       can :crud, Post do |post|
         user == post.user

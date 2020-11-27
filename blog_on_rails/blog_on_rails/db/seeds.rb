@@ -17,7 +17,8 @@
     first_name: 'Irene',
     last_name: 'Lim',
     email:'lala@gmail.com',
-    password: PASSWORD
+    password: PASSWORD,
+    admin: true
   )
 
   10.times do 

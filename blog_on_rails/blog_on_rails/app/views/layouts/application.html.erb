@@ -10,22 +10,18 @@
     <%= csp_meta_tag %>
     <%= javascript_pack_tag 'application' %>
   </head>
+
   <body>
-    <div class='container-fluid'>
+  <div class='container-fluid'>
     <%= flash[:notice] || flash[:alert] || flash[:danger] %>
     <%= link_to 'Home', root_path %>
-      
     <%= link_to 'New Post',new_post_path %>
-    
-     <%if user_signed_in? %>
-    Hello <%= current_user.full_name%>,
-     <%= link_to "Logout", session_path, method: :delete, 
-                    data: {confirm: "Are you sure you want to log out?"}  %> 
-
+    <%if user_signed_in? %>
+      Hello <%= current_user.full_name%>,
+    <%= link_to "Logout", session_path, method: :delete, data: {confirm: "Are you sure you want to log out?"}  %> 
     <% else %>
-      <%= link_to "Login", new_session_path %> 
-
-      <%= link_to "Sign Up", new_user_path %>    
+    <%= link_to "Login", new_session_path %> 
+    <%= link_to "Sign Up", new_user_path %>    
 
     <% end %>
       </span>  
@@ -33,7 +29,9 @@
 </nav>
 
    <div class='container-fluid'>
-    <%= flash[:notice] || flash[:alert] %>
+   
+ <%= flash[:notice] || flash[:alert] %> 
+
     </div>
     <%= yield %>
   

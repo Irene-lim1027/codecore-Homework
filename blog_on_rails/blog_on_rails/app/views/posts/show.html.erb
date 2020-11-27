@@ -1,5 +1,6 @@
     <h1><%= @post.title %></h1>
     <p><%= @post.body %></p>
+    <h5> Created by: <%= @post.user&.full_name %> </h5>
     <p><%= time_ago_in_words(@post.created_at) %></p>
     <%=link_to "Edit", edit_post_path(@post)%>
     <%=link_to "Delete",post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %>
@@ -28,3 +29,7 @@
     <% end %>
     </li>
     </ul>
+    <small>
+    Commented by <%= @comment.user &.full_name %>
+    </small>
+    

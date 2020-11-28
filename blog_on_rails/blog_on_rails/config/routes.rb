@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   resources :posts do
   resources :comments, only: [:create, :update, :destroy]
   end 
-  
-  resources :users, only: [:new,:create]
+
+  get '/sign_up', to: "users#new"
+  resources :users, only: [:create, :edit, :update, :destroy]
   resource :session, only: [:new, :create, :destroy]
+
+  get "/users/:id/change_password", { to: "users#password_edit", as: "edit_password" }
+  patch "/users/:id/change_password", { to: "users#password_update", as: "update_password" }
 end

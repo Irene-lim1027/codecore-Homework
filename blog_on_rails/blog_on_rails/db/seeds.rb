@@ -70,4 +70,4 @@ comments = Comment.all
     
 puts Cowsay.say("Generated #{posts.count} posts", :dragon)
 puts Cowsay.say("Created #{comments.count} comments!", :cow)
-puts Cowsay.say("Created #{users.count} users!", :frog)
+puts Cowsay.say("Created #{users.count} users!", :cow)

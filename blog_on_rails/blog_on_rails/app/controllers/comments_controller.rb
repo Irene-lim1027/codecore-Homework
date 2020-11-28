@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+    before_action :authenticate_user!, except:[:index, :show]
+
     def create
         @post = Post.find params[:post_id]
         @comment = Comment.new params.require(:comment).permit(:body)
@@ -15,13 +17,15 @@ class CommentsController < ApplicationController
     end
 
     def destroy 
+        
         @comment = Comment.find params[:id]
         if can? :crud, @comment
         @comment.destroy
         redirect_to post_path(@comment.post)
         else
-            head :unauthorize
+        @post = Post.find params[:post_id]
+        flash[:danger] = "Access Denied"
+        redirect_to post_path(@post)
         end
     end
-        
 end

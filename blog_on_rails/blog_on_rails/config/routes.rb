@@ -14,8 +14,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :update, :destroy]
   end 
 
-  get '/sign_up', to: "users#new"
-  resources :users, only: [:create, :edit, :update, :destroy]
+  resources :users, only: [:new, :create, :edit, :update, :destroy]
   resource :session, only: [:new, :create, :destroy]
 
   get "/users/:id/change_password", { to: "users#password_edit", as: "edit_password" }

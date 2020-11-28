@@ -1,3 +1,4 @@
+
 <h1><%= @post.title %></h1>
     <p><%= @post.body %></p>
     <h5> Created by: <%= @post.user&.full_name %> </h5>
@@ -18,12 +19,13 @@
     <p><%= f.submit "Submit" %></p>
 <% end %>
 
-    <ul>
+   <ul>
         <% @comments.each do |comment| %>
     <li>
         <p><%= comment.body %></p>  
-        <% if can? :crud, @comment %>  
         <%= time_ago_in_words(comment.created_at) %>
+        <% if can? :crud, @comment %>  
+   
         <%= link_to(
          "Delete",
          post_comment_path(@post,comment),method: :delete, data: {confirm: "Are you sure you want to delete comments?"})%>
@@ -33,3 +35,4 @@
     </li>
     </ul>
       
+ 

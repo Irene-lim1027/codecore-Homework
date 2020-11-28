@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   
     def create
       @user = User.new user_params
-      if @user.save
-        session[:user_id] = @user.id
+      if @user.save  
+        session[:user_id] = @user.id 
         redirect_to root_path
       else
         render :new
@@ -35,9 +35,11 @@ class UsersController < ApplicationController
     end
   
     def password_update
-        puts params[:user][:current_password]
+      
         if @user&.authenticate(params[:user][:current_password])
-          if @user.update(password: params[:user][:new_password], password_confirmation: params[:user][:new_password_confirmation])
+          if @user.update(
+            password: params[:user][:new_password], 
+            password_confirmation: params[:user][:new_password_confirmation])
             flash[:success] = "Password updated!"
             redirect_to root_path
           else
@@ -60,10 +62,6 @@ class UsersController < ApplicationController
         :password,
         :password_confirmation,
       )
-    end
-
-    def password_params
-
     end
   
     def find_user

@@ -37,7 +37,7 @@
             end
         end
 
-        def destroy# Why???not working!!!!!
+        def destroy
             @post = Post.find params[:id]
             @post.destroy
             redirect_to posts_path 

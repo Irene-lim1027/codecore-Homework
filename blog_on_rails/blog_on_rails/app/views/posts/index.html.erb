@@ -1,0 +1,15 @@
+  <h1>All Posts 🐶 </h1>
+  <div class="container"> 
+  <div class="row">
+  <% @posts.each do |post| %>
+  <div class="col-sm-12 col-md-6 col-lg-4">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to post.title, post_path(post) %></h5>
+      <p class="card-text"><%= post.body %></p>
+    </div>
+    </div>
+  </div>
+  <% end %>
+  </div>
+  </div>

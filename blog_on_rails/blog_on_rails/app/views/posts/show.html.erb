@@ -20,15 +20,14 @@
 <% end %>
 
    <ul>
-        <% @comments.each do |comment| %>
+        <% @comments.each do |c| %>
     <li>
-        <p><%= comment.body %></p>  
-        <%= time_ago_in_words(comment.created_at) %>
-        <% if can? :crud, @comment %>  
-   
+        <p><%= c.body %></p>  
+        <%= time_ago_in_words(c.created_at) %>
+        <% if can? :crud, c %>  
         <%= link_to(
          "Delete",
-         post_comment_path(@post,comment),method: :delete, data: {confirm: "Are you sure you want to delete comments?"})%>
+         post_comment_path(@post,c),method: :delete, data: {confirm: "Are you sure you want to delete comments?"})%>
     
     <% end %>
     <% end %>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="styles.css" type="text/css"/>
+</head>
+<body>
+  <ul class="grid-container">
+    <div class="container left">
+      <div class="grid-item">
+        <h1>Hangman </h1>
+        <br>
+        <div class="grid-item button__container" id="button"></div>
+        <br>
+        <p class="grid-item" id="wordSpotlight">The word to be guessed goes here</p>
+        <div>With <span id="mistakes">0</span> failures of :<span id="maxWrong"></span></div>
+      </div>
+      <img class="grid-item" id="hangman" src="./images/gallows0.jpg" alt="gallows">
+    </div>
+    <div class="container right">
+     <div class="grid-item">
+          <button class="reset-button" onClick="reset()">New Game!</button>
+        </div>
+    </div>
+    </ul>
+  <script src="./scripts.js"></script>
+</body>
+</html>
